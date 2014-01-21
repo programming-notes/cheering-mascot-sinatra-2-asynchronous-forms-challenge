@@ -1,8 +1,8 @@
-# Deaf Sinatra 2 Asynchronous Forms 
- 
-## Learning Competencies 
+# Deaf Sinatra 2 Asynchronous Forms
 
-## Summary 
+## Learning Competencies
+
+## Summary
 
  We're going to build on the previous [Deaf Sinatra](http://socrates.devbootcamp.com/challenges/268) challenge, this time using [jQuery](http://jquery.com/) and [AJAX](http://en.wikipedia.org/wiki/Ajax_%28programming%29) to submit our form rather than the default browser behavior.
 
@@ -66,11 +66,11 @@ When your browser is operating synchronously it has to sit and wait for the serv
 
 In a synchronous environment it's easy to handle errors, for example.  We submit a request, we wait to see whether it succeeds or fails, and display a message accordingly.  The world is stopped as the request is being processed.
 
-In an asynchronous environment it's much more difficult.  We submit a request, but won't know when we'll know whether it succeeded or failed.  There's a period of time where the request is "unknown," which often means an extra state we have to display in our user interface, e.g., not just "succeeded" or "failed" but "in progress", "succeeded", or "failed". 
+In an asynchronous environment it's much more difficult.  We submit a request, but won't know when we'll know whether it succeeded or failed.  There's a period of time where the request is "unknown," which often means an extra state we have to display in our user interface, e.g., not just "succeeded" or "failed" but "in progress", "succeeded", or "failed".
 
 ## Releases
-### Release 0 
+### Release 0
 
-## Optimize Your Learning 
+## Optimize Your Learning
 
 ## Resources
