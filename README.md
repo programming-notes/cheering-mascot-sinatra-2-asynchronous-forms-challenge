@@ -19,7 +19,7 @@ behavior.
 You're free to start from your earlier code.  Otherwise, you can use the
 starter code provided in `source`
 
-### application.js
+### Pre-Release: application.js
 
 All your JavaScript should go into `public/js/application.js`.  It should look
 something like this at first:
