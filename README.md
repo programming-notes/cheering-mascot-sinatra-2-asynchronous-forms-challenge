@@ -2,9 +2,9 @@
 
 ## Learning Competencies
 
-- Explain what does synchronous / asynchronous means
-- Use jQuery to make an [AJAX](#ajax) request
-- Use jQuery to update the DOM
+* Explain what does synchronous / asynchronous means
+* Use jQuery to make an [AJAX](#ajax) request
+* Use jQuery to update the DOM
 
 ## Summary
 
