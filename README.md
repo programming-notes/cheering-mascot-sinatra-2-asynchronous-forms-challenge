@@ -5,6 +5,7 @@
 * Explain what does synchronous / asynchronous means
 * Use jQuery to make an [AJAX](#ajax) request
 * Use jQuery to update the DOM
+* Map asynchronous data flow parallel to main application
 
 ## Summary
 
