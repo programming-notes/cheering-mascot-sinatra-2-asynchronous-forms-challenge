@@ -9,7 +9,7 @@
 
 ## Summary
 
-We're going to build on the previous Deaf Sinatra challenge, this time using
+We're going to build on the [Deaf Sinatra challenge](https://github.com/sea-lions-2014/deaf-sinatra-1-synchronous-forms-challenge), this time using
 [jQuery][] and [AJAX][] to submit our form rather than the default browser
 behavior.
 
