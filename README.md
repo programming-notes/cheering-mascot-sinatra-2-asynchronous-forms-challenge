@@ -9,7 +9,7 @@
 
 ## Summary
 
-We're going to build on the [Deaf Sinatra challenge](https://github.com/sea-lions-2014/deaf-sinatra-1-synchronous-forms-challenge), this time using
+We're going to build on the [Deaf Sinatra challenge][], this time using
 [jQuery][] and [AJAX][] to submit our form rather than the default browser
 behavior.
 
@@ -106,6 +106,7 @@ we have to display in our user interface, e.g., not just "succeeded" or
 * [jQuery API documentation topic post()][jquery-ajax-post-documentation]
 * [jQuery API documentation topic on()][jquery-on-documentation]
 
+[Deaf Sinatra challenge]: https://github.com/sea-lions-2014/deaf-sinatra-1-synchronous-forms-challenge
 [jQuery]: http://jquery.com/
 [AJAX]: http://en.wikipedia.org/wiki/Ajax_%28programming%29
 [submit-api-documentation]: http://api.jquery.com/submit/
