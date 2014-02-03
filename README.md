@@ -2,24 +2,17 @@
 
 ## Learning Competencies
 
-* Explain what does synchronous / asynchronous means
+* Implement synchronous / asynchronous requests in a web application
+* Write custom event handlers in JavaScript and jQuery
+* Change the DOM based on events
 * Use jQuery to make an [AJAX](#ajax) request
-* Use jQuery to update the DOM
-* Map asynchronous data flow parallel to main application
+* Use AJAX actions to change views based on async data
 
 ## Summary
 
 We're going to build on the [Deaf Sinatra challenge][], this time using
 [jQuery][] and [AJAX][] to submit our form rather than the default browser
 behavior.
-
-
-## Releases
-
-You're free to start from your earlier code.  Otherwise, you can use the
-starter code provided in `source`
-
-### Pre-Release: application.js
 
 All your JavaScript should go into `public/js/application.js`.  It should look
 something like this at first:
@@ -34,9 +27,12 @@ $(document).ready(function() {
 });
 ```
 
-### Release 0
 
-### Implement an Asynchronous Deaf Grandma
+## Releases
+
+You're free to start from your earlier code.  Otherwise, you can use the starter code provided in `source`
+
+### Release 0 : Implement an Asynchronous Deaf Grandma
 
 Use the following jQuery methods to implement an asynchronous version of Deaf Grandma:
 
@@ -56,13 +52,12 @@ You'll need to do five things:
    asynchronous part &mdash; you don't know when the server will respond)
 5. Prevent the form to be submitted from submitting in the default way
 
-### Submit Your Code
 
-Submit via a PR.
-
-## What is AJAX?
-
+## Optimize Your Learning
 <a target="ajax">
+
+**What is AJAX?**
+
 
 The "A" in AJAX stands for asynchronous.  Under this model your browser sends
 an HTTP request to the server from inside the current page, via JavaScript.
