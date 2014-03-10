@@ -7,7 +7,7 @@
 * Write custom event handlers in JavaScript and jQuery
 * Use AJAX actions to change views based on async data
 
-<a href='http://pulse.devbootcamp.com/challenges/15/skills'>Track your learning on Pulse</a>
+<a href='https://pulse.devbootcamp.com/challenges/15/skills'>Track your learning on Pulse</a>
 
 ## Summary
 
