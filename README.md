@@ -3,10 +3,11 @@
 ## Learning Competencies
 
 * Implement synchronous / asynchronous requests in a web application
-* Write custom event handlers in JavaScript and jQuery
 * Change the DOM based on events
-* Use jQuery to make an [AJAX](#ajax) request
+* Write custom event handlers in JavaScript and jQuery
 * Use AJAX actions to change views based on async data
+
+<a href='http://pulse.devbootcamp.com/challenges/15/skills'>Track your learning on Pulse</a>
 
 ## Summary
 
