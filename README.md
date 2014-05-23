@@ -31,7 +31,9 @@ $(document).ready(function() {
 
 ## Releases
 
-You're free to start from your earlier code.  Otherwise, you can use the starter code provided in `source`
+Start with the code you wrote for the challenge: Deaf Sinatra 1: Synchronous
+Forms. You'll be modifying your previous solution so the client communicates
+with the server asynchronously.
 
 ### Release 0 : Implement an Asynchronous Deaf Grandma
 
