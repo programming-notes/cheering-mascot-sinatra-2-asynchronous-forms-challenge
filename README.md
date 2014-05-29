@@ -7,8 +7,6 @@
 * Write custom event handlers in JavaScript and jQuery
 * Use AJAX actions to change views based on async data
 
-<a href='https://pulse.devbootcamp.com/challenges/15/skills'>Track your learning on Pulse</a>
-
 ## Summary
 
 We're going to build on the [Deaf Sinatra challenge][], this time using
