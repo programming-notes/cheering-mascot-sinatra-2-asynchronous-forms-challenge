@@ -100,7 +100,7 @@ continued ...
 ```
 *Figure 2*. Partial AJAX `POST` request.
 
-How can we tell whether a request is an AJAX request?  In the Network panel, if we take a look at a `POST` request made when our form is submitted, among the headers we'll see `X-Requested-With: XMLHttpRequest` (see Figure 2).  This signals that this request was an AJAX request.
+How can we tell whether a request is an AJAX request?  In the Network panel, if we take a look at a `POST` request made when our form is submitted with JavaScript, among the headers we'll see `X-Requested-With: XMLHttpRequest` (see Figure 2).  This signals that this request was an AJAX request.
 
 Fortunately, within our controller's request handlers, Sinatra provides us access to an object that represents the HTTP request.  This object is available to use through the variable `request`, and we can [call methods on the request object][request-methods].  We can ask the request if it's an `XMLHttpRequest`, and if it is, our controller can respond appropriately.
 
@@ -115,7 +115,7 @@ For *Release 3* update the controller handler for `POST` requests to `/cheers`, 
 ### Release 4: Handle the Response
 Now that we're getting an appropriate response back from the server, it's time to do something with it.  We need to add the text returned from the server to the DOM.
 
-We'll need to determine what we want to happen once we receive the response to our request from the server.  When we call `.ajax()`, we can chain other method calls that determine what should happen if the request succeeds, if it fails, or what should always happen.  
+We'll need to determine what exactly we want to happen once we receive the response from the server and translate that to code.  When we call `.ajax()`, we can chain other method calls that determine what should happen if the request succeeds, if it fails, or what should always happen.  
 
 - `jqXHR.done(function( data, textStatus, jqXHR ) {});`
 - `jqXHR.fail(function( jqXHR, textStatus, errorThrown ) {});`
@@ -129,10 +129,12 @@ Notice that each of these methods takes a callback function as an argument.  In 
 For *Release 4*, if our request is successful, take the text that is returned from the server and add it to the DOM, so that it appears to be on the sign.  If there is already text on the sign, it will need to be replaced with the new text.
 
 ### Release 5: Reset the Form
-We want to be able to call our one cheer after another.  After the form has been submitted, we want to clear out the value of the input field.
+We want to be able to call one cheer after another.  It would be a lesser user experience if we had to manually remove cheer names.  So, after the form has been submitted, we always want to do two things:
 
+- Clear the value of the input field.
+- Set the focus on the input field.
 
-
+For *Release 5*, after we submit the form, the value of the input field should be reset and focus should be set on the input field, so that we can enter a new cheer name without first clicking on the input field.
 
 
 ## Conclusion
