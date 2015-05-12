@@ -138,7 +138,12 @@ For *Release 5*, after we submit the form, the value of the input field should b
 
 
 ## Conclusion
-Yeah!
+Welcome to the world of AJAX.  Making HTTP requests through JavaScript—whether to submit a form, dynamically load content, etc.—offers a great way to enhance our applications.  Both to improve their performance and to improve user experience.
+
+Having completed this challenge, we should have a basic understanding of the request-response cycle in the context of JavaScript (i.e., AJAX requests).  And while we'll need more practice to increase our familiarity with the jQuery API for making AJAX requests and handling responses, we should be familiar with the methods and syntax used to make AJAX requests (e.g., `.ajax()` and the methods that allow us to handle the responses to our requests (e.g., `.done()`).
+
+
+
 
 [jQuery]: http://jquery.com/
 [AJAX]: http://en.wikipedia.org/wiki/Ajax_%28programming%29
