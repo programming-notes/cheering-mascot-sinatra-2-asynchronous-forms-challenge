@@ -1,111 +1,152 @@
 # Deaf Sinatra 2 Asynchronous Forms
 
-## Learning Competencies
-
-* Implement synchronous / asynchronous requests in a web application
-* Change the DOM based on events
-* Write custom event handlers in JavaScript and jQuery
-* Use AJAX actions to change views based on async data
-
 ## Summary
+In this challenge, we are going to take a functioning Sinatra application and add some JavaScript that will both make an HTTP `POST` request to our server and handle the response that come back from our server.  In doing so, we'll need to build on our understanding of the request-response cycle.  If we don't already grasp how that cycle works, it will be difficult to understand what's going on in this challenge.
 
-We're going to build on the [Deaf Sinatra challenge][], this time using
-[jQuery][] and [AJAX][] to submit our form rather than the default browser
-behavior.
+The main focus of this challenge is to practice using the [jQuery][] library to make HTTP requests and handle the responses.  In addition, we'll be looking at some related topics:
 
-All your JavaScript should go into `public/js/application.js`.  It should look
-something like this at first:
+- Preventing the browser from making its normal HTTP request when a form is submitted.
+- Modifying our controllers to behave differently depending on whether a request was made by JavaScript.
+- Modifying the DOM.
 
-```javascript
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-});
-```
+We should already be somewhat comfortable using jQuery to assign event handlers to specific events—in other words, when the user does *X*, the event, execute *Y*, the event handler.
 
 
-## Releases
+### AJAX
+We are going to write JavaScript that will handle the request-response cycle for us, making HTTP requests and handling the responses.  Normally, when we click a link on a webpage, the browser will take the click as a cue to make a `GET` request.  Or, when we click a form's submit button, the browser will package up the data in the form's input fields and send it as part of a `POST` request.  The browser is designed to listen for these events and take action when they occur.  But, sometimes we don't want the browser to do anything.
 
-Start with the code you wrote for the challenge: Deaf Sinatra 1: Synchronous
-Forms. You'll be modifying your previous solution so the client communicates
-with the server asynchronously.
+Sometimes we want to handle those events ourselves.  And so we write JavaScript to do what we want.  In the case of clicking a link, we'll write JavaScript to make our own HTTP `GET` request.  Or, in the case of a form submission, we'll write JavaScript to package up the form's data and submit the `POST` request—which is what we'll be doing in this challenge.  When we talk about making an [AJAX][] request, this is basically what we're talking about:  making HTTP requests with JavaScript.
 
-### Release 0 : Implement an Asynchronous Deaf Grandma
+### Asynchronous ...
+AJAX is an acronym that stands for *asynchronous JavaScript and XML*.  
 
-Use the following jQuery methods to implement an asynchronous version of Deaf Grandma:
+Asynchronous is the important part.  With AJAX, we'll generally be dealing with both making an HTTP request and handling the response sent back from the server.  When we send a request, we don't know how long it will take for the server to respond.  In the meantime, while the server is working to prepare the response to our request, we want our site to continue to be useable; we don't want to shut everything down while we wait on the server.  And whenever that response does come back, we'll to be ready to handle it.
 
-* [.submit()][submit-api-documentation]
-* [.serialize()][serialize-api-documentation]
-* [jQuery.post()][jquery-ajax-post-documentation]
+If we need an analogy for asynchronicity, it might be helpful to picture ourselves waiting in line at the deli in a grocery store.  If the deli operates *synchronously*, we might get in line with everyone else and wait for our turn.  While we're standing in line, we might think to ourselves, "Instead of standing here doing nothing, it would be nice if we could continue shopping for the other items on our list until its our turn."
 
-
-Read up on how to [bind to events with jQuery][jquery-on-documentation] if you need to.
-
-You'll need to do five things:
-
-1. Bind a callback to be triggered when your form is submitted
-2. Serialize the data in the form to be submitted
-3. Use jQuery's AJAX API to make a `POST` request to the server
-4. When the server responds, update the page accordingly (this is the
-   asynchronous part &mdash; you don't know when the server will respond)
-5. Prevent the form to be submitted from submitting in the default way
-
-
-## Optimize Your Learning
-<a target="ajax">
-
-**What is AJAX?**
-
-
-The "A" in AJAX stands for asynchronous.  Under this model your browser sends
-an HTTP request to the server from inside the current page, via JavaScript.
-Because we don't know when the web server will respond to our request &mdash;
-it might take 100 milliseconds or it might take 2 seconds &mdash; our browser
-can't "freeze up" and stop everything while we wait.  Instead, we write code in
-a style that permits the response to return at any time and with any data.
-
-Think of it as the difference between a video call on Skype (synchronous) and
-email (asynchronous).  Or the difference between a restaurant that forces you
-to wait to be seated versus a restaurant that takes your name and phone number
-and offers to call you when your table is ready.  The former is easier for
-everyone to understand; there are fewer moving parts and it's easier to
-estimate when you'll be seated. But if the wait is long it becomes frustrating.
-You can't go to a nearby bar while you're waiting.
+What would an *asynchronous* deli look like?  Rather than asking customers to stand in line, it might use a take-a-number system.  When we arrive as customers we take a number.  We don't know exactly how long it will be before the deli will be ready for us.  But, until it is, we can continue our shopping, and the deli will let us know when it's ready to help us.
 
 When your browser is operating synchronously it has to sit and wait for the
 server to respond before it can do anything else.  This is how a browser
-normally works, by fetching or posting to a URL (via HTTP) and waiting for the
-response.  When your browser is operating asynchronously, it can send off a
-request at any time and continue on its merry way, but has to deal with the
-fact that the response could come back at any moment.
-
-In a synchronous environment it's easy to handle errors, for example.  We
-submit a request, we wait to see whether it succeeds or fails, and display a
-message accordingly.  The world is stopped as the request is being processed.
-
-In an asynchronous environment it's much more difficult.  We submit a request,
-but won't know when we'll know whether it succeeded or failed.  There's a
-period of time where the request is "unknown," which often means an extra state
-we have to display in our user interface, e.g., not just "succeeded" or
-"failed" but "in progress", "succeeded", or "failed".
+normally works; it makes HTTP requests and waits for the responses.  When your browser is operating asynchronously, it can send off a request and continue on its merry way, but it also has to deal with the fact that the response could come back at any moment.
 
 
-## Resources
+## Releases
+### Pre-release: Review the Working Application
+As mentioned in the *Summary*, in this challenge we are going to take a functioning site and modify it.  The site is a working version of another challenge, cheering mascot, which you might already be familiar with.
 
-* [jQuery Documentation][jQuery]
-* [Wikipedia definition of AJAX][AJAX]
-* [jQuery API documentation topic submit()][submit-api-documentation]
-* [jQuery API documentation topic serialize()][serialize-api-documentation]
-* [jQuery API documentation topic post()][jquery-ajax-post-documentation]
-* [jQuery API documentation topic on()][jquery-on-documentation]
+Let's make sure we understand how the code is working.  Specifically, let's trace the request-response cycle when submitting a form.
 
-[Deaf Sinatra challenge]: https://github.com/sea-lions-2014/deaf-sinatra-1-synchronous-forms-challenge
+- What type of request is made?
+- To which URL is the request made?
+- What data is sent along with the request?
+- Which controller action does the request hit?
+- What communication is there between the controller and the models?
+- What type of response is sent back from the server?
+- What data is sent as part of the response?
+
+Feel free to start the server and explore the application.  Once we have a solid understanding of how this application is working synchronously, we can begin to make it asynchronous.
+
+We'll be writing our JavaScript code in the file `public/js/application.js`.
+
+### Release 0: Listen for a Submit Event and Stop the Browser
+As mentioned earlier, our browser is designed to listen for form submissions and to take action when a submission occurs.  When we want to write our own JavaScript handler for a particular form's submission, the first thing we need to do is listen for the submission event and stop the browser from taking any action.
+
+For *Release 0*, set up a listener for the form submission.  In the event handler, just prevent the browser from sending its own `POST` request.  In other words, when the user tries to submit the form, nothing should happen.
+
+The following links might be helpful.
+
+- [jQuery documentation: `.on()`][on-doc]
+- [jQuery documentation: `.submit()`][submit-doc]
+
+### Release 1: Gather Data from the Form
+Once we've stopped the browser from sending its own `POST` request when our form is submitted, we can begin to build our own request.  One task that we'll need to accomplish is to gather the data from the form, so that we can send it with our request.
+
+Recall that when data is sent along with a `POST` request, it is added to the request body as a series of key-value pairs formatted like a query string (e.g., `first_name=Corey&last_name=Haywood`).  We need to provide the key-value pairs, and we have a couple options for how to do so.
+
+```javascript
+var data = { first_name: "Corey", last_name: "Haywood" };
+```
+*Figure 1*. A JavaScript object representing the data to be submitted along with a `POST` request.
+
+One option for gathering the data is to manually build a JavaScript object (see Figure 1); the object's properties and their values would be transformed into a query string.  Another option is to create the query string, using jQuery's [`.serialize()`][serialize-doc] method.
+
+For *Release 1*, with your event handler, after preventing the browser from submitting a request, gather the data for the form using either of the approaches described above.  
+
+### Release 2: Build the Request
+The jQuery library provides us with methods for making HTTP requests.  One of these methods is [`.ajax()`][ajax-doc].
+
+Think about the data that makes up an HTTP request.  In order to build our request, what information would we need to provide.  We've already gathered the data that we'll send from our form.  What other information is necessary?  What type of request do we want to make, `GET`, `POST`, something else?  To which URL will we make our request?
+
+Read through the documentation on jQuery's `.ajax()`.  It might be helpful to review the [examples](http://api.jquery.com/jquery.ajax/#entry-examples) near the bottom of the page.
+
+For *Release 2*, use the `.ajax()` method to submit a request when the user submits a form—for the time being, we'll ignore the response.  When this is working we should be able to see our request being made in the [Network panel of the Developer Tools][network-panel].
+
+### Release 3: Modify the Controller
+Currently, when a `POST` request is made to the `/cheers` path, there's only one possible response:  the server is going send back a redirect response.
+
+Without JavaScript when the form was submitted in the conventional way, that was a perfectly fine response.  Before we decided to *AJAXify* our site, it was working just fine.  And, if a user has disabled JavaScript in their browser, we would still want to send this response.
+
+So, if the request comes into the server, and it's a normal HTTP request, we want to continue sending back the redirect response.  However, if the request is an AJAX request, we'll want to send back a different response.  
+
+```text
+POST /cheers HTTP/1.1
+Host: localhost:9393
+Origin: http://localhost:9393
+X-Requested-With: XMLHttpRequest
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+
+continued ...
+```
+*Figure 2*. Partial AJAX `POST` request.
+
+How can we tell whether a request is an AJAX request?  In the Network panel, if we take a look at a `POST` request made when our form is submitted, among the headers we'll see `X-Requested-With: XMLHttpRequest` (see Figure 2).  This signals that this request was an AJAX request.
+
+Fortunately, within our controller's request handlers, Sinatra provides us access to an object that represents the HTTP request.  This object is available to use through the variable `request`, and we can [call methods on the request object][request-methods].  We can ask the request if it's an `XMLHttpRequest`, and if it is, our controller can respond appropriately.
+
+In this situation, what would an appropriate response to an AJAX request be?  We want to change the text on the mascot sign depending on the cheer name submitted in the form.  So, we probably just need the controller to send us back the text to put on the sign.
+
+![](screenshot-ajax-response-network-panel.png)
+
+*Figure 3*.  Developer Tools Network panel showing response to AJAX request.
+
+For *Release 3* update the controller handler for `POST` requests to `/cheers`, so that for AJAX requests, the controller's response is just the text to put on the mascot sign.  When this is working, in the Network panel of the Developer Tools, we should be able to look at our request and then look at the response and see just the text on the sign (see Figure 3).
+
+### Release 4: Handle the Response
+Now that we're getting an appropriate response back from the server, it's time to do something with it.  We need to add the text returned from the server to the DOM.
+
+We'll need to determine what we want to happen once we receive the response to our request from the server.  When we call `.ajax()`, we can chain other method calls that determine what should happen if the request succeeds, if it fails, or what should always happen.  
+
+- `jqXHR.done(function( data, textStatus, jqXHR ) {});`
+- `jqXHR.fail(function( jqXHR, textStatus, errorThrown ) {});`
+- `jqXHR.always(function( data|jqXHR, textStatus, jqXHR|errorThrown ) { });`
+
+  *Copied from the jQuery docs. `jqXHR` refers to [the object returned][jqxhr-doc] by the `.ajax()` method.*
+
+
+Notice that each of these methods takes a callback function as an argument.  In the case of `.done()`, the callback function we pass to it is executed when our request was successful.  When the callback function is executed, it is passed three arguments:  `data`, which represents the response body; `textStatus` (e.g. `"success"`); and `jqXHR`.  The `.ajax()` [examples](http://api.jquery.com/jquery.ajax/#entry-examples) demonstrate how to use these methods.
+
+For *Release 4*, if our request is successful, take the text that is returned from the server and add it to the DOM, so that it appears to be on the sign.  If there is already text on the sign, it will need to be replaced with the new text.
+
+### Release 5: Reset the Form
+We want to be able to call our one cheer after another.  After the form has been submitted, we want to clear out the value of the input field.
+
+
+
+
+
+## Conclusion
+Yeah!
+
 [jQuery]: http://jquery.com/
 [AJAX]: http://en.wikipedia.org/wiki/Ajax_%28programming%29
-[submit-api-documentation]: http://api.jquery.com/submit/
-[serialize-api-documentation]: http://api.jquery.com/serialize/
-[jquery-ajax-post-documentation]: http://api.jquery.com/jQuery.post/
-[jquery-on-documentation]: http://api.jquery.com/on/
+[on-doc]: http://api.jquery.com/on/
+[submit-doc]: http://api.jquery.com/submit/
+[serialize-doc]: http://api.jquery.com/serialize/
+[ajax-doc]: http://api.jquery.com/jquery.ajax/
+[jqxhr-doc]: http://api.jquery.com/jquery.ajax/#jqXHR
+[done-doc]: http://api.jquery.com/deferred.done/
+[fail-doc]: http://api.jquery.com/deferred.fail/
+[always-doc]: http://api.jquery.com/deferred.always/
+[network-panel]: https://developer.chrome.com/devtools/docs/network#network-panel-overview
+[request-methods]: http://www.sinatrarb.com/intro.html#Accessing%20the%20Request%20Object
