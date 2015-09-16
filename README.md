@@ -18,7 +18,7 @@ We are going to write JavaScript that will handle the request-response cycle for
 Sometimes we want to handle those events ourselves.  And so we write JavaScript to do what we want.  In the case of clicking a link, we'll write JavaScript to make our own HTTP `GET` request.  Or, in the case of a form submission, we'll write JavaScript to package up the form's data and submit the `POST` request—which is what we'll be doing in this challenge.  When we talk about making an [AJAX][] request, this is basically what we're talking about:  making HTTP requests with JavaScript.
 
 ### Asynchronous ...
-AJAX is an acronym that stands for *asynchronous JavaScript and XML*.  
+AJAX is an acronym that stands for *asynchronous JavaScript and XML*.
 
 Asynchronous is the important part.  With AJAX, we'll generally be dealing with both making an HTTP request and handling the response sent back from the server.  When we send a request, we don't know how long it will take for the server to respond.  In the meantime, while the server is working to prepare the response to our request, we want our site to continue to be useable; we don't want to shut everything down while we wait on the server.  And whenever that response does come back, we'll to be ready to handle it.
 
@@ -71,7 +71,7 @@ var data = { first_name: "Corey", last_name: "Haywood" };
 
 One option for gathering the data is to manually build a JavaScript object (see Figure 1); the object's properties and their values would be transformed into a query string.  Another option is to create the query string, using jQuery's [`.serialize()`][serialize-doc] method.
 
-For *Release 1*, with your event handler, after preventing the browser from submitting a request, gather the data for the form using either of the approaches described above.  
+For *Release 1*, with your event handler, after preventing the browser from submitting a request, gather the data for the form using either of the approaches described above.
 
 ### Release 2: Build the Request
 The jQuery library provides us with methods for making HTTP requests.  One of these methods is [`.ajax()`][ajax-doc].
@@ -83,11 +83,11 @@ Read through the documentation on jQuery's `.ajax()`.  It might be helpful to re
 For *Release 2*, use the `.ajax()` method to submit a request when the user submits a form—for the time being, we'll ignore the response.  When this is working we should be able to see our request being made in the [Network panel of the Developer Tools][network-panel].
 
 ### Release 3: Modify the Controller
-Currently, when a `POST` request is made to the `/cheers` path, there's only one possible response:  the server is going send back a redirect response.
+Currently, when a `POST` request is made to the `/cheers` path, there's only one possible response:  the server is going to send back a redirect response.
 
 Without JavaScript when the form was submitted in the conventional way, that was a perfectly fine response.  Before we decided to *AJAXify* our site, it was working just fine.  And, if a user has disabled JavaScript in their browser, we would still want to send this response.
 
-So, if the request comes into the server, and it's a normal HTTP request, we want to continue sending back the redirect response.  However, if the request is an AJAX request, we'll want to send back a different response.  
+So, if the request comes into the server, and it's a normal HTTP request, we want to continue sending back the redirect response.  However, if the request is an AJAX request, we'll want to send back a different response.
 
 ```text
 POST /cheers HTTP/1.1
@@ -115,7 +115,7 @@ For *Release 3* update the controller handler for `POST` requests to `/cheers`, 
 ### Release 4: Handle the Response
 Now that we're getting an appropriate response back from the server, it's time to do something with it.  We need to add the text returned from the server to the DOM.
 
-We'll need to determine what exactly we want to happen once we receive the response from the server and translate that to code.  When we call `.ajax()`, we can chain other method calls that determine what should happen if the request succeeds, if it fails, or what should always happen.  
+We'll need to determine what exactly we want to happen once we receive the response from the server and translate that to code.  When we call `.ajax()`, we can chain other method calls that determine what should happen if the request succeeds, if it fails, or what should always happen.
 
 - `jqXHR.done(function( data, textStatus, jqXHR ) {});`
 - `jqXHR.fail(function( jqXHR, textStatus, errorThrown ) {});`
