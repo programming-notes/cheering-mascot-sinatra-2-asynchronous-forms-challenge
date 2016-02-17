@@ -1,4 +1,4 @@
-# Deaf Sinatra 2 Asynchronous Forms
+# Cheering Mascot 2: Asynchronous Forms
 
 ## Summary
 In this challenge, we are going to take a functioning Sinatra application and add some JavaScript that will both make an HTTP `POST` request to our server and handle the response that come back from our server.  In doing so, we'll need to build on our understanding of the request-response cycle.  If we don't already grasp how that cycle works, it will be difficult to understand what's going on in this challenge.
