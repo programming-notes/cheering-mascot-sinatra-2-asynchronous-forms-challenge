@@ -106,7 +106,7 @@ Fortunately, within our controller's request handlers, Sinatra provides us acces
 
 In this situation, what would an appropriate response to an AJAX request be?  We want to change the text on the mascot sign depending on the cheer name submitted in the form.  So, we probably just need the controller to send us back the text to put on the sign.
 
-![](screenshot-ajax-response-network-panel.png)
+![](readme-assets/screenshot-ajax-response-network-panel.png)
 
 *Figure 3*.  Developer Tools Network panel showing response to AJAX request.
 
@@ -135,6 +135,13 @@ We want to be able to call one cheer after another.  It would be a lesser user e
 - Set the focus on the input field.
 
 For *Release 5*, after we submit the form, the value of the input field should be reset and focus should be set on the input field, so that we can enter a new cheer name without first clicking on the input field.
+
+
+### Release 6:  Check Functionality without JavaScript
+As noted in previous releases, when we enhance our application with JavaScript we don't want to break non-JS functionality.  So, turn off JavaScript in the browser (see Figure 4) and manually test that the site still works.  Just remember to enable JavaScript when we're done.
+
+![disabling JavaScript](readme-assets/disable-javascript.gif)  
+*Figure 4*.  Disabling JavaScript from the Chrome Developer Tools (Chrome Version 51.0.2704.106 (64-bit))
 
 
 ## Conclusion
