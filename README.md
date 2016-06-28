@@ -106,7 +106,7 @@ Fortunately, within our controller's request handlers, Sinatra provides us acces
 
 In this situation, what would an appropriate response to an AJAX request be?  We want to change the text on the mascot sign depending on the cheer name submitted in the form.  So, we probably just need the controller to send us back the text to put on the sign.
 
-![](screenshot-ajax-response-network-panel.png)
+![](readme-assets/screenshot-ajax-response-network-panel.png)
 
 *Figure 3*.  Developer Tools Network panel showing response to AJAX request.
 
