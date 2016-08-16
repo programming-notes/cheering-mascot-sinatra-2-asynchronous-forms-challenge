@@ -138,17 +138,18 @@ For *Release 5*, after we submit the form, the value of the input field should b
 
 
 ### Release 6:  Check Functionality without JavaScript
-As noted in previous releases, when we enhance our application with JavaScript we don't want to break non-JS functionality.  So, turn off JavaScript in the browser (see Figure 4) and manually test that the site still works.
 
-
-## Achtung! ¡Importante! Mise en garde! Oppassen!
-
-Remember to enable JavaScript when we're done with this verification. Or else you, or a cohort-mate are going to have some nasty surprises tomorrow when you try to use a computer that has its JavaScript disabled. Every serious JavaScript developer remembers the day they burned way too much time because they'd turned off JS and forgotten it!
-
+As noted in previous releases, when we enhance our application with JavaScript we don't want to break non-JS
+functionality.  So, turn off JavaScript in the browser (see Figure 4) and manually test that the site still works.
 
 ![disabling JavaScript](readme-assets/disable-javascript.gif)  
 *Figure 4*.  Disabling JavaScript from the Chrome Developer Tools (Chrome Version 51.0.2704.106 (64-bit))
 
+### Release 7: Reenable JavaScript
+
+Enable JavaScript. Otherwise, you or a cohort-mate will find a nasty surprise tomorrow when you try to use a computer
+where JavaScript is disabled. Many JavaScript developers have burned way too much time debugging because they'd disabled
+JS and forgotten to reenable it.
 
 ## Conclusion
 Welcome to the world of AJAX.  Making HTTP requests through JavaScript—whether to submit a form, dynamically load content, etc.—offers a great way to enhance our applications.  Both to improve their performance and to improve user experience.
