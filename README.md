@@ -147,9 +147,7 @@ functionality.  So, turn off JavaScript in the browser (see Figure 4) and manual
 
 ### Release 7: Reenable JavaScript
 
-Enable JavaScript. Otherwise, you or a cohort-mate will find a nasty surprise tomorrow when you try to use a computer
-where JavaScript is disabled. Many JavaScript developers have burned way too much time debugging because they'd disabled
-JS and forgotten to reenable it.
+Enable JavaScript. Otherwise, you or a cohort-mate will find a nasty surprise tomorrow when you try to use a computer where JavaScript is disabled. Many JavaScript developers have burned way too much time debugging because they'd disabled JS and forgotten to reenable it.
 
 ## Conclusion
 Welcome to the world of AJAX.  Making HTTP requests through JavaScript—whether to submit a form, dynamically load content, etc.—offers a great way to enhance our applications.  Both to improve their performance and to improve user experience.
